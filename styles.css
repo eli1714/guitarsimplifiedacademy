@@ -1,0 +1,708 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Dosis", sans-serif;
+  color: #1b2522;
+
+  --title-duration: 500ms;
+  --sub-title-duration: 500ms;
+  --nav-duration: 200ms;
+  --btn-grow-duration: 200ms;
+  --guitar-pick-duration: 200ms;
+
+  --sub-title-delay: calc(var(--title-duration) - 200ms);
+  --nav-delay: calc(var(--sub-title-delay) + var(--sub-title-duration));
+  --btn-grow-delay: var(--nav-delay);
+  --guitar-pick-delay: var(--nav-delay);
+}
+
+p {
+  line-height: 1.5rem;
+}
+
+.full-screen-header {
+  height: 100vh;
+  background-image: url("img/header_image.jpg");
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav {
+  background-color: #040303;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+
+  animation: nav-enter var(--nav-duration) var(--nav-delay) backwards;
+}
+
+.nav-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.gsa-logo {
+  width: 70px;
+}
+
+.nav-list {
+  margin: 0;
+  display: flex;
+  list-style: none;
+}
+
+.nav-list a {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-right: 40px;
+
+  transition: color 100ms;
+}
+
+.nav-list a:hover,
+.nav-list a:focus,
+.footer-list a:hover,
+.footer-list a:focus {
+  color: hsl(0, 52%, 42%);
+  transition: 200ms;
+}
+
+.hamburger {
+  display: none;
+}
+
+.header-title {
+  font-size: 3rem;
+  margin: 0;
+  margin-bottom: 1rem;
+
+  animation: title-enter var(--title-duration);
+}
+
+.sub-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+
+  animation: sub-title-enter var(--sub-title-duration) var(--sub-title-delay) backwards;
+}
+
+.btn {
+  background-color: hsl(0, 52%, 42%);
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.3em;
+  padding: 0.5em 1em;
+  color: white;
+  font-family: inherit;
+  font-size: 1.3em;
+
+  transition: 200ms;
+}
+
+.btn:focus,
+.btn:hover {
+  background-color: hsl(0, 52%, 32%);
+}
+
+.btn-grow {
+  animation: btn-grow-enter var(--btn-grow-duration) var(--btn-grow-delay) backwards;
+}
+
+.btn-grow:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px 1px black;
+}
+
+.guitar-pick-icon {
+  position: absolute;
+  bottom: 1rem;
+  width: 40px;
+
+  animation: guitar-pick-bounce calc(var(--guitar-pick-duration) + var(--guitar-pick-delay)) 1s
+      alternate infinite linear,
+    guitar-pick-enter var(--guitar-pick-duration) var(--guitar-pick-delay) backwards;
+}
+
+.section {
+  padding: 7rem;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.about {
+  margin-right: 100px;
+}
+
+.about:last-child {
+  margin-right: 0;
+}
+
+.guitar-practice-img {
+  height: 350px;
+}
+
+.about-content {
+  width: 500px;
+}
+
+.courses-section {
+  background-color: #f5f6fa;
+  padding: 5rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin: 0;
+  margin-bottom: 5rem;
+  text-align: center;
+  color: black;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(auto, 275px));
+  justify-content: center;
+  row-gap: 100px;
+  column-gap: 70px;
+  text-align: center;
+}
+
+.course-grid-item img {
+  width: 60px;
+  margin-bottom: 1.5rem;
+}
+
+.course-grid-item:hover img {
+  animation: shake 200ms;
+}
+
+.course-title {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.section-prices {
+  background-color: #810000;
+  padding: 2rem;
+}
+
+.pricing-cards-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pricing-card {
+  padding: 2rem 3rem;
+  background-color: #eeebdd;
+  border: 1px solid black;
+  border-radius: 0.3em;
+  margin: 1rem 0;
+
+  transition: transform 200ms;
+}
+
+.pricing-card:hover {
+  transform: scale(1.03);
+}
+
+.pricing-card.accent {
+  margin: 0;
+  background-color: white;
+}
+
+.pricing-card:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  transform-origin: right;
+}
+
+.pricing-card:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: none;
+  transform-origin: left;
+  position: static;
+}
+
+.price-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.plan-name {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.plan-price {
+  font-size: 2.75rem;
+  font-weight: bold;
+}
+
+.plan-price::after {
+  content: "/mo";
+  color: #777;
+  font-size: 1rem;
+}
+
+.feature {
+  margin-bottom: 0.5rem;
+}
+
+.btn-signup-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-signup {
+  text-transform: uppercase;
+}
+
+.feature:before {
+  content: "\2611";
+  color: hsl(120, 68%, 63%);
+  margin-right: 0.5rem;
+}
+
+.feature.inactive::before {
+  content: "\2612";
+  color: red;
+}
+
+.feature.inactive {
+  color: #777;
+  text-decoration: line-through;
+}
+
+.form {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form label {
+  color: black;
+  font-weight: bold;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  outline: none;
+  border: 1px solid #1b2522;
+  border-radius: 0.3em;
+  padding: 0.5em;
+  color: inherit;
+  font-family: inherit;
+
+  transition: border-color 200ms;
+}
+
+.form textarea {
+  resize: vertical;
+  min-height: 75px;
+  max-height: 200px;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: #a33333;
+}
+
+.btn-container {
+  text-align: end;
+}
+
+.btn-square {
+  border-radius: 0.3em;
+}
+
+footer {
+  background-color: #1b2522;
+  color: white;
+  padding: 2rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.footer-column-item:last-child {
+  margin-right: 0;
+}
+
+.footer-header {
+  text-transform: uppercase;
+  text-decoration: underline;
+  margin: 0;
+  text-align: center;
+}
+
+.footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-list li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-list li:last-child {
+  margin-bottom: 0;
+}
+
+.footer-list a {
+  text-decoration: none;
+  color: white;
+}
+
+.fa-phone,
+.fa-envelope {
+  margin-right: 5px;
+}
+
+.social-media-list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.social-media-list li {
+  margin: 0;
+}
+
+.social-media-list a {
+  margin-right: 20px;
+}
+
+.reveal {
+  position: relative;
+  opacity: 0;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+
+.active.fade-top {
+  animation: fade-top 500ms ease-in;
+}
+
+.active.fade-bottom {
+  animation: fade-bottom 500ms ease-in;
+}
+
+.active.fade-left {
+  animation: fade-left 500ms ease-in;
+}
+
+.active.fade-right {
+  animation: fade-right 500ms ease-in;
+}
+
+@keyframes guitar-pick-bounce {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shake {
+  25% {
+    transform: rotate(5deg);
+  }
+
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes title-enter {
+  from {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes sub-title-enter {
+  from {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes nav-enter {
+  from {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes btn-grow-enter {
+  from {
+    transform: scale(0);
+  }
+}
+
+@keyframes guitar-pick-enter {
+  from {
+    transform: scale(0) rotate(180deg);
+  }
+}
+
+@keyframes fade-top {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-left {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1444px) {
+  .full-screen-header {
+    background-position-x: 60%;
+  }
+
+  .about-section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .about {
+    margin-right: 30px;
+  }
+
+  .guitar-practice-img {
+    object-fit: contain;
+  }
+
+  @media (max-width: 1214px) {
+    .guitar-practice-img {
+      width: 450px;
+      height: 450px;
+    }
+  }
+}
+
+@media (max-width: 1079px) {
+  nav.change {
+    position: fixed;
+    align-items: flex-start;
+    width: 100%;
+    height: 20%;
+  }
+
+  ul.nav-list.change {
+    display: block;
+    align-self: center;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  ul.nav-list.change li {
+    margin-bottom: 10px;
+  }
+
+  ul.nav-list.change li:last-child {
+    margin-bottom: 0;
+  }
+
+  ul.nav-list.change a {
+    margin-right: 0;
+  }
+
+  .nav-list {
+    display: none;
+  }
+
+  .hamburger {
+    display: inline;
+    cursor: pointer;
+  }
+
+  .hamburger.change {
+    padding-top: 19px;
+  }
+
+  .bar1,
+  .bar2,
+  .bar3 {
+    width: 35px;
+    height: 5px;
+    margin: 6px 0;
+    background-color: white;
+    transition: 0.4s;
+  }
+
+  .change .bar1 {
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
+
+  .change .bar2 {
+    opacity: 0;
+  }
+
+  .change .bar3 {
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
+
+  .about-section {
+    padding: 3rem 5rem;
+  }
+
+  .container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .about {
+    margin-bottom: 50px;
+  }
+
+  .about.about-img {
+    margin-right: 0;
+  }
+
+  .guitar-practice-img {
+    width: 500px;
+    height: auto;
+    display: inline-block;
+  }
+
+  .pricing-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .full-screen-header {
+    background-position-x: 60%;
+  }
+
+  .courses-grid {
+    grid-template-columns: minmax(auto, 450px);
+  }
+
+  .pricing-cards-container {
+    flex-wrap: wrap;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+  }
+
+  .pricing-card,
+  .pricing-card.accent {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 2rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+
+  .pricing-card:first-child,
+  .pricing-card:last-child {
+    border-radius: 0.3em;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    transform-origin: center;
+  }
+
+  .pricing-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .feature.inactive {
+    display: none;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 545px) {
+  .header-title {
+    text-align: center;
+  }
+
+  .about-section {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .about-content {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .section-prices {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
