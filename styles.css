@@ -706,3 +706,20 @@ footer {
     padding-right: 0;
   }
 }
+
+@media (max-width: 477px) {
+  .about-content{ 
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .about-content,
+  .about.about-img {
+    width: 300px;
+    text-align: center;
+  }
+
+  .about-img {
+    overflow: hidden;
+  }
+}
