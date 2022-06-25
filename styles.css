@@ -297,6 +297,10 @@ p {
   text-decoration: line-through;
 }
 
+#contact {
+  padding: 5rem 7rem 7rem;
+}
+
 .form {
   max-width: 900px;
   margin: 0 auto;
@@ -401,6 +405,10 @@ footer {
 
 .social-media-list a {
   margin-right: 20px;
+}
+
+.last-child {
+  margin-right: 0 !important;
 }
 
 .reveal {
@@ -561,6 +569,7 @@ footer {
     align-self: center;
     padding-left: 0;
     text-align: center;
+    margin-right: 2.2rem;
   }
 
   ul.nav-list.change li {
@@ -683,6 +692,15 @@ footer {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+  }
+
+  .footer-column-item {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .social-media-list {
+    justify-content: center;
   }
 }
 
